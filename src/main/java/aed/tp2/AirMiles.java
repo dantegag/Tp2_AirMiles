@@ -4,7 +4,7 @@ public record Id(int value) {}
 public class AirMiles implements SistemaAirMiles {
     private Id elMasAcumulador;
     private Id elMasCanjeador;
-    
+    private ABB<InfoUsuario> usuarios;
     
     class InfoUsuario {
     int id;
@@ -36,7 +36,7 @@ public class AirMiles implements SistemaAirMiles {
             }
 
     public void registrarUsuario(int id) {
-        insertar(id);
+        usuarios.insertar(id);
     }
 
     public void registrarUsuarioConReferidor(int id, int ref) {

@@ -7,7 +7,7 @@ public class MaxHeap {
     private int[] array;
 
 
-    public vacio(){
+    public void vacio(){
         array = new int[0];
     }
 
@@ -15,11 +15,11 @@ public class MaxHeap {
         return array[0];
     }
 
-    public encolar(){
+    public void encolar(){
         
     }
 
-    public desencolar(){
-
+    public int desencolar(){
+        return;
     }
 }
