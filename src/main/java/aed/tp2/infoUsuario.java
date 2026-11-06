@@ -13,6 +13,10 @@ public class infoUsuario {
     public void InfoUsuario(int id, double bonoInicial) {
         this.id = id;
         this.bono = bonoInicial;
+        this.voladas = 0;
+        this.canjeadas = 0;
+        this.enviadas = 0;
+        this.recibidas = 0;
         this.totales = bonoInicial;      
         this.disponibles = bonoInicial;  
         this.handleDisponibles = -1;    
@@ -21,8 +25,5 @@ public class infoUsuario {
         this.esExclusivo = true;
     }
 
-    public boolean compareTo(){
-        
-    }
 }
 
