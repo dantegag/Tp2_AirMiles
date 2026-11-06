@@ -4,7 +4,7 @@ public record Id(int value) {}
 public class AirMiles implements SistemaAirMiles {
     private Id elMasAcumulador;
     private Id elMasCanjeador;
-    private ABB<InfoUsuario> usuarios;
+    private ABB<Handle<InfoUsuario>> usuarios;
     
     class InfoUsuario {
     int id;
@@ -27,7 +27,7 @@ public class AirMiles implements SistemaAirMiles {
 }
 
     public AirMiles() {
-            usuarios = new ABB();                 // adentro: raiz = null
+            usuarios = new ABB<Handle<InfoUsuario>>;                 // adentro: raiz = null
             promos = new Trie();                  
             heapDisponibles = new MaxHeap();
             heapTotales = new MaxHeap();

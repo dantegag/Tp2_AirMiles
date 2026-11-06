@@ -2,16 +2,18 @@ package aed.tp2;
 
 import java.util.ArrayList;
 
+import aed.tp2.AirMiles.InfoUsuario;
+
 public class MaxHeap {
 
-    private int[] array;
+    private InfoUsuario[] array;
 
 
     public void vacio(){
-        array = new int[0];
+        array = new InfoUsuario[0];
     }
 
-    public int proximo(){
+    public InfoUsuario proximo(){
         return array[0];
     }
 
