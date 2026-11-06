@@ -27,11 +27,16 @@ public class AirMiles implements SistemaAirMiles {
 }
 
     public AirMiles() {
-        throw new UnsupportedOperationException("Sin implementar");
-    }
+            usuarios = new ABB();                 // adentro: raiz = null
+            promos = new Trie();                  
+            heapDisponibles = new MaxHeap();
+            heapTotales = new MaxHeap();
+            masCanjeador = null;                  // no hay usuarios todavía
+            promos.definir("NoPromo", new Promo(1.0, false, 0));
+            }
 
     public void registrarUsuario(int id) {
-        throw new UnsupportedOperationException("Sin implementar");
+        insertar(id);
     }
 
     public void registrarUsuarioConReferidor(int id, int ref) {
