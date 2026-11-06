@@ -36,6 +36,15 @@ public class infoUsuario {
         private int id(){
             return this.usuario.id;
         }
+        private void eliminar(){
+
+        }
+        private void modificar(){
+
+        }
+        private boolean equals(Handle<infoUsuario> u){
+            return true;
+        }
     }
 }
 
