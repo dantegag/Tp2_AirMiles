@@ -1,7 +1,7 @@
 package aed.tp2;
 public class Trie<V> {
 
-    private static final int ALFABETO = 256;
+    
 
     private Nodo<V> raiz;
     private int cantidadClaves;
@@ -12,7 +12,7 @@ public class Trie<V> {
         V valor;
         Nodo() {
             
-            hijos = new Nodo[ALFABETO];
+            hijos = new Nodo[null];
             cantHijos = 0;
             valor = null;
         }
@@ -49,16 +49,12 @@ public class Trie<V> {
         return n == null ? null : n.valor;
     }
 
-    /** O(|L|). */
+    
     public boolean pertenece(String clave) {
         Nodo<V> n = buscarNodo(clave);
         return n != null && n.valor != null;
     }
 
-    /**
-     * Borra la clave si estaba definida, podando las ramas que quedan sin uso.
-     * Si no estaba, no hace nada. O(|L|).
-     */
     public void borrar(String clave) {
         if (!pertenece(clave)) {
             return;
@@ -67,12 +63,10 @@ public class Trie<V> {
         cantidadClaves--;
     }
 
-    /** O(1). */
     public int cantidadClaves() {
         return cantidadClaves;
     }
 
-    /** O(1). */
     public boolean estaVacio() {
         return cantidadClaves == 0;
     }
