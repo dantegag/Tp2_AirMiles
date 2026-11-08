@@ -1,8 +1,4 @@
 package aed.tp2;
-
-import java.util.*;
-
-// Todos los tipos de datos "Comparables" tienen el método compareTo()
 // elem1.compareTo(elem2) devuelve un entero. Si es mayor a 0, entonces elem1 > elem2
 public class ABB<T extends Comparable<T>> {
     private Nodo raiz;
@@ -99,7 +95,12 @@ public class ABB<T extends Comparable<T>> {
                 
         }
     
-        
+    public T obtener(T elem){
+        if(!pertenece(elem)){
+            return null;
+        }
+        return buscador(elem).valor;
+    }
         
 
         

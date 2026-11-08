@@ -1,6 +1,6 @@
 package aed.tp2;
 
-interface Handle<T>{    
+interface Handle<T> extends Comparable<Handle<T>>{    
     /**
      * Devuelve el valor del elemento
      * 

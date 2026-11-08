@@ -1,50 +1,63 @@
 package aed.tp2;
 
-import aed.tp2.AirMiles.InfoUsuario;
 
-public class infoUsuario {
-    private int id;
-    private double voladas, canjeadas, enviadas, recibidas;
-    private double totales, disponibles;
-    private int handleDisponibles, handleTotales;
-    private InfoUsuario socio;
-    private boolean esExclusivo;
+public class infoUsuario implements Comparable<infoUsuario>{
+    int id;
+    double totales, disponibles, gastadas;
+    infoUsuario socio;
+    boolean esExclusivo;
 
-    public void InfoUsuario(int id, double bonoInicial) {
+    public infoUsuario (int id, double bonoInicial) {
         this.id = id;
-        this.voladas = 0;
-        this.canjeadas = 0;
-        this.enviadas = 0;
-        this.recibidas = 0;
+        this.gastadas = 0;
         this.totales = bonoInicial;      
-        this.disponibles = bonoInicial;  
-        this.handleDisponibles = -1;    
-        this.handleTotales = -1;
+        this.disponibles = bonoInicial;
         this.socio = null;               
         this.esExclusivo = true;
     }
 
-    private class Handle implements Handle<T>{
-        private infoUsuario usuario;
-
-        private Handle(infoUsuario u){
-            this.usuario = u;
+    public int masDisponibles(infoUsuario otro){ //Devuelve positivo si this tiene más millas disponibles, negativo si no y 0 si tienen las mismas
+        int res = 0;
+        if (this.disponibles > otro.disponibles){
+            res = 1;
+        } else if(otro.disponibles > this.disponibles){
+            res = -1;
         }
-        private infoUsuario valor(){
-            return this.usuario;
-        }
-        private int id(){
-            return this.usuario.id;
-        }
-        private void eliminar(){
-
-        }
-        private void modificar(){
-
-        }
-        private boolean equals(Handle<infoUsuario> u){
-            return true;
-        }
+        return res;
     }
+   public String categoria(){ //Devuelve la categoria de un usuairo en base a totales
+    String res = "Bronce"; 
+    if (10000 <= this.totales && this.totales < 50000){
+        res = "Plata";
+    } else if (50000 <= this.totales && this.totales < 1000000){
+        res = "Oro";
+    } else if (this.totales >= 1000000){
+        res = "Platino";
+    }
+    return res;
+   }
+
+   public double factorCategoria(){ //Devuelve directamente el factor de categoría del usuario
+    double res = 1.0;
+    if (this.categoria().equals("Plata")){
+        res = 1.5;
+    } else if (this.categoria().equals("Oro")){
+        res = 2.0;
+    } else if (this.categoria().equals("Platino")){
+        res = 0.0;
+    }
+    return res;
+   }
+
+   @Override 
+   public int compareTo(infoUsuario otro){ //Compara a los usuarios por id
+    int res = 0;
+    if (this.id > otro.id){
+        res = 1;
+    } else if (otro.id > this.id){
+        res = -1;
+    }
+    return res;
+   }
 }
 

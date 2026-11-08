@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="aed.tp2.AirMilesTests" time="0.233" tests="20" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="27"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="E:\Algo1_TP2\Tp2_AirMiles\target\test-classes;E:\Algo1_TP2\Tp2_AirMiles\target\classes;C:\Users\Pipi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\Pipi\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Pipi\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\Pipi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Pipi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\Pipi\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Argentina/Buenos_Aires"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="27"/>
+    <property name="user.country" value="MX"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\oracleJdk-27\bin"/>
+    <property name="sun.java.command" value="C:\Users\Pipi\AppData\Local\Temp\surefire7559090420731401968\surefirebooter-20261108190400307_3.jar C:\Users\Pipi\AppData\Local\Temp\surefire7559090420731401968 2026-11-08T19-03-58_325-jvmRun1 surefire-20261108190400307_1tmp surefire_0-20261108190400307_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="E:\Algo1_TP2\Tp2_AirMiles\target\test-classes;E:\Algo1_TP2\Tp2_AirMiles\target\classes;C:\Users\Pipi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\Pipi\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Pipi\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\Pipi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Pipi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\Pipi\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Pipi"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-10-25"/>
+    <property name="java.home" value="C:\oracleJdk-27"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="E:\Algo1_TP2\Tp2_AirMiles"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Pipi\AppData\Local\Temp\surefire7559090420731401968\surefirebooter-20261108190400307_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="27.0.1.0.3+1-2"/>
+    <property name="user.name" value="Pipi"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Users\Pipi\.vscode-insiders\extensions\oracle.oracle-java-27.0.0\nbcode\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\Pipi\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Pipi\AppData\Local\Temp\"/>
+    <property name="java.version" value="27.0.1.0.3"/>
+    <property name="user.dir" value="E:\Algo1_TP2\Tp2_AirMiles"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\oracleJdk-27\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Python38\Scripts\;C:\Python38\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Microsoft VS Code Insiders\bin;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY\;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\WSL\;C:\Program Files\Microsoft VS Code Insiders\bin\copilot-shim;C:\Users\Pipi\AppData\Local\Microsoft\WindowsApps;C:\tools\ghc-9.8.1\bin;C:\Users\Pipi\AppData\Local\Programs\Antigravity IDE\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="27.0.1.0.3+1-2"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="71.0"/>
+  </properties>
+  <testcase name="variosParesExclusivos" classname="aed.tp2.AirMilesTests" time="0.062"/>
+  <testcase name="testIntegracionCompleja" classname="aed.tp2.AirMilesTests" time="0.002"/>
+  <testcase name="finalizarPromocion" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="rankingSeActualizaDespuesDeConsultarlo" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="transferirMillasYParesExclusivos" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="transicionesCategoriaYFactores" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="stressTest" classname="aed.tp2.AirMilesTests" time="0.143"/>
+  <testcase name="canjearYElMasCanjeador" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="testRankingInmutableAnteMultiplesConsultas" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="rankingConSaldosIgualesYCanje" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="crearSistema" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="rankingMillasMenosUsuariosQueN" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="registrarUsuario" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="transferenciaRecibidaNoSumaATotales" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="topePromocion" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="categoriaPlatinoNoSumaMillas" classname="aed.tp2.AirMilesTests" time="0"/>
+  <testcase name="registrarUsuarioConReferidor" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="testRupturaDeHandleParesExclusivos" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="acumularMillasYRanking" classname="aed.tp2.AirMilesTests" time="0.001"/>
+  <testcase name="rankingDespuesDeRegistroConReferidor" classname="aed.tp2.AirMilesTests" time="0"/>
+</testsuite>
