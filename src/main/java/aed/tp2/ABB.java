@@ -1,33 +1,33 @@
 package aed.tp2;
-// elem1.compareTo(elem2) devuelve un entero. Si es mayor a 0, entonces elem1 > elem2
-public class ABB<T extends Comparable<T>> {
+// Diccionario ordenado por una clave int: cada nodo guarda (clave, valor) y se compara SOLO por la clave
+public class ABB<T> {
     private Nodo raiz;
     private int cantidad;
 
-    private Nodo buscador(T elem) {
+    // Devuelve el nodo con esa clave, o (si no está) el nodo que sería su padre
+    private Nodo buscador(int clave) {
         Nodo actual = raiz;
         Nodo anterior = null;
 
         while (actual != null) {
-            int cmp = elem.compareTo(actual.valor);
-            if (cmp == 0) return actual;
-
+            if (clave == actual.clave) return actual;
             anterior = actual;
-            if( cmp > 0) actual= actual.derecha;
-            else actual= actual.izquierda;
+            if (clave > actual.clave) actual = actual.derecha;
+            else actual = actual.izquierda;
         }
-            return anterior;
-        
+        return anterior;
     }
 
     private class Nodo {
         T valor;
+        int clave;
         Nodo izquierda;
         Nodo derecha;
         Nodo padre;
 
-        Nodo(T v) {
+        Nodo(T v, int c) {
             valor = v;
+            clave = c;
         }
     }
 
@@ -42,80 +42,52 @@ public class ABB<T extends Comparable<T>> {
     }
 
     public T minimo(){
-       if (cantidad==1)return raiz.valor;  
-       else{
-        Nodo actual=raiz;
-        while (actual.izquierda !=null){
-            actual=actual.izquierda;
-
+        Nodo actual = raiz;
+        while (actual.izquierda != null){
+            actual = actual.izquierda;
         }
         return actual.valor;
-       }
-        
-       
     }
 
     public T maximo(){
-        if (cantidad==1)return raiz.valor;  
-       else{
-        Nodo actual=raiz;
-        while (actual.derecha !=null){
-            actual=actual.derecha;
-
+        Nodo actual = raiz;
+        while (actual.derecha != null){
+            actual = actual.derecha;
         }
         return actual.valor;
-       }
-        
-       
     }
-    public void insertar(T elem){
-        
-        
-        
-        if (cantidad==0){
-            Nodo nuevo= new Nodo(elem);
-            raiz=nuevo;
-            cantidad +=1;
-            return ;
+
+    public void insertar(int clave, T valor){
+        if (cantidad == 0){
+            raiz = new Nodo(valor, clave);
+            cantidad += 1;
+            return;
         }
-        
-        if (! pertenece(elem)){
-            Nodo padre=buscador(elem);
-            Nodo nuevo= new Nodo(elem);
-            nuevo.padre=padre;
-            if (elem.compareTo(padre.valor)>0 ){
-                    
-                padre.derecha=nuevo;
-                }
-            else {
-                padre.izquierda=nuevo;
-                }
-            cantidad +=1;
+
+        if (!pertenece(clave)){
+            Nodo padre = buscador(clave);
+            Nodo nuevo = new Nodo(valor, clave);
+            nuevo.padre = padre;
+            if (clave > padre.clave){
+                padre.derecha = nuevo;
+            } else {
+                padre.izquierda = nuevo;
+            }
+            cantidad += 1;
         }
-                
-        }
-    
-    public T obtener(T elem){
-        if(!pertenece(elem)){
+    }
+
+    public T obtener(int clave){
+        if (!pertenece(clave)){
             return null;
         }
-        return buscador(elem).valor;
+        return buscador(clave).valor;
     }
-        
 
-        
+    public boolean pertenece(int clave){
+        return cantidad != 0 && buscador(clave).clave == clave;
+    }
 
-        
-        
-    
-
-    public boolean pertenece(T elem){
-        if(cantidad==0 || (buscador(elem).valor).compareTo(elem) != 0){return false;}
-        else return true;
-        
-
-        }
-    
 
     private void reemplazar(Nodo viejo, Nodo nuevo) {
     if (viejo.padre == null) raiz = nuevo;
@@ -144,9 +116,9 @@ public class ABB<T extends Comparable<T>> {
 
     }
 
-    public void eliminar(T elem) {
-        if (!pertenece(elem)) return;
-        Nodo nodo = buscador(elem);
+    public void eliminar(int clave) {
+        if (!pertenece(clave)) return;
+        Nodo nodo = buscador(clave);
 
         if (nodo.izquierda == null) {
             reemplazar(nodo, nodo.derecha);     
@@ -158,6 +130,7 @@ public class ABB<T extends Comparable<T>> {
         else{
             Nodo s = sucesor(nodo);
             nodo.valor = s.valor;          // el nodo queda con el valor del sucesor
+            nodo.clave = s.clave;          // ...y con su clave, si no el árbol queda desordenado
             reemplazar(s, s.derecha);
         }
         

@@ -11,22 +11,20 @@ public class AirMiles implements SistemaAirMiles {
     public AirMiles() { //Constructor del sistema
             usuarios = new ABB<Handle<infoUsuario>>(); //Creo un nuevo ABB vacío de handles
             promos = new Trie<promo>();  //Creo un Trie vacío para las promos       
-            heapDisponibles = new MaxHeap<infoUsuario>((u1, u2) -> u1.masDisponibles(u2)); //Le paso un comparator al MaxHeap de usuarios para que esté ordenado por millasDisponibles
+            heapDisponibles = new MaxHeap<infoUsuario>((u1, u2) -> u1.compareTo(u2)); //El heap se ordena con el compareTo de infoUsuario (millas disponibles, desempata por id)
             masCanjeador = null; //Sin usuarios
             masAcumulador = null;
             promos.definir("NoPromo", new promo("noPromo", 1.0, 0)); //Creo la noPromo
         }
 
-    private Handle<infoUsuario> buscarHandle(int id){ //Método auxiliar para recuperar el handle de un usuario usando su id
-        infoUsuario temp = new infoUsuario(id, 0);
-        Handle<infoUsuario> hBusqueda = heapDisponibles.crearHandleBusqueda(temp);
-        return usuarios.obtener(hBusqueda);
+    private Handle<infoUsuario> buscarHandle(int id){ //Recupero el handle del usuario buscándolo en el ABB por su id (la clave)
+        return usuarios.obtener(id);
     } 
 
     public void registrarUsuario(int id) {
         infoUsuario nuevo = new infoUsuario(id, 0); //Creo la infoUsuario del nuevo usuario (sin bono)
         Handle<infoUsuario> h = heapDisponibles.encolar(nuevo); //Creo el handle del nuevo usuario y lo guardo en el heap
-        usuarios.insertar(h); //Guardo el handle en el ABB
+        usuarios.insertar(id, h); //Guardo el handle en el ABB
         if(masAcumulador == null){ //Si es el primer usuario, es automáticamente el mas acumulador
             masAcumulador = nuevo;
         }
@@ -35,7 +33,7 @@ public class AirMiles implements SistemaAirMiles {
     public void registrarUsuarioConReferidor(int id, int ref) {        
         infoUsuario nuevo = new infoUsuario(id, 500); //Creo la infoUsuario del nuevo usuario con su bono de referido
         Handle<infoUsuario> h = heapDisponibles.encolar(nuevo); 
-        usuarios.insertar(h);
+        usuarios.insertar(id,h);
         Handle<infoUsuario> hRef = buscarHandle(ref); //Busco el handle del referidor
         infoUsuario uRef = hRef.valor(); //Accedo al usuario del handle
         uRef.disponibles += 500; //Sumo el bono de 500 a sus millas disponibles
@@ -54,7 +52,7 @@ public class AirMiles implements SistemaAirMiles {
             p = promos.obtener("NoPromo"); 
         }
         double millasGanadas = distancia * p.factor * u.factorCategoria(); //Calculo las millas ganadas con la distancia y los factores de categoría y promo
-        if (p != null && p.tieneTope){ //Voy a actualizar el tope de la promo en caso de que lo tenga y ésta exista
+        if (p == null || (p.tieneTope && p.tope < distancia * p.factor * u.factorCategoria())) { //Voy a actualizar el tope de la promo en caso de que lo tenga y ésta exista
             p.tope -= millasGanadas;
             if (p.tope <= 0){ //Reviso si le queda tope a la promo
                 promos.borrar(p.nombre); //Si se agotó el tope, borro la promo

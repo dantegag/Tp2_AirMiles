@@ -43,7 +43,7 @@ public class Trie<V> {
         actual.valor = valor;
     }
 
-    /** Devuelve el valor asociado a la clave, o null si no esta definida. O(|L|). */
+    
     public V obtener(String clave) {
         Nodo<V> n = buscarNodo(clave);
         return n == null ? null : n.valor;
@@ -55,10 +55,7 @@ public class Trie<V> {
         return n != null && n.valor != null;
     }
 
-    /**
-     * Borra la clave si estaba definida, podando las ramas que quedan sin uso.
-     * Si no estaba, no hace nada. O(|L|).
-     */
+
     public void borrar(String clave) {
         if (!pertenece(clave)) {
             return;
@@ -67,12 +64,12 @@ public class Trie<V> {
         cantidadClaves--;
     }
 
-    /** O(1). */
+    
     public int cantidadClaves() {
         return cantidadClaves;
     }
 
-    /** O(1). */
+    
     public boolean estaVacio() {
         return cantidadClaves == 0;
     }
