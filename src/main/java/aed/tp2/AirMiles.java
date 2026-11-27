@@ -87,7 +87,7 @@ public class AirMiles implements SistemaAirMiles {
         uDestino.disponibles += cantidad; //Origen gana cantidad de disponibles
         hOrigen.modificar(uOrigen); //Actualizo la posición de ambos en el heap
         hDestino.modificar(uDestino);
-        if(masCanjeador == null || uOrigen.gastadas >= masCanjeador.gastadas){ //Reviso si uOrigen superó al más canjeador, en cuyo caso lo actualizo
+        if(masCanjeador == null || uOrigen.gastadas > masCanjeador.gastadas){ //Reviso si uOrigen superó al más canjeador, en cuyo caso lo actualizo
             masCanjeador = uOrigen;
         }
         if (uOrigen.socio == null){ //Actualizo el estado de exclusividad de destino y origen, en caso de que no tuvieran socio o tuvieran un socio diferente
