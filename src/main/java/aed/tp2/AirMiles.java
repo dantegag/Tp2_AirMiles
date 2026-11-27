@@ -52,9 +52,12 @@ public class AirMiles implements SistemaAirMiles {
             p = promos.obtener("NoPromo"); 
         }
         double millasGanadas = distancia * p.factor * u.factorCategoria(); //Calculo las millas ganadas con la distancia y los factores de categoría y promo
-        if (p == null || (p.tieneTope && p.tope < distancia * p.factor * u.factorCategoria())) { //Voy a actualizar el tope de la promo en caso de que lo tenga y ésta exista
-            p.tope -= millasGanadas;
-            if (p.tope <= 0){ //Reviso si le queda tope a la promo
+        if ( p.tieneTope && p.tope < millasGanadas) { // si no hay suficiente tope, se ignora
+            millasGanadas=distancia*u.factorCategoria();}
+
+        else if (p.tieneTope){ 
+                p.tope-=millasGanadas;
+                if (p.tope ==0){
                 promos.borrar(p.nombre); //Si se agotó el tope, borro la promo
             }
         }
