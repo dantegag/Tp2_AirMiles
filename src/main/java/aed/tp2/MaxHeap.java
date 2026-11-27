@@ -36,7 +36,7 @@ public class MaxHeap<T extends Comparable<T>>{
         }
         
         public void eliminar(){
-        //Nunca se eliminan usuarios, solo está acá para cumplir con la interfaz
+
         }
 
     }
@@ -48,72 +48,73 @@ public class MaxHeap<T extends Comparable<T>>{
     }
 
     private void swap(int i, int j){
-        HandleHeap aux = heap.get(i);
-        heap.set(i, heap.get(j));
-        heap.set(j, aux);
-        heap.get(i).posicion = i;
-        heap.get(j).posicion = j;
+        HandleHeap valI=heap.get(i);
+        HandleHeap valJ=heap.get(j);
+        heap.set(i, valJ);
+        heap.set(j,valI);
+        valI.posicion=j;
+        valJ.posicion=i;
+
+        
     }
 
     private void siftUp(int i){
-        while(i > 0){
-            int padre = (i - 1) / 2;
-            if (comparador.compare(heap.get(i).valor, heap.get(padre).valor) > 0){
-                swap(i, padre);
-                i = padre;
-            } else {
-                break;
-            }
-        }
+        while (i!=0 && comparador.compare(heap.get(i).valor(),heap.get((i-1)/2).valor()) >0){
+
+            swap(i,(i-1)/2);
+            i=(i-1)/2;}
+            
+    
     }
 
     private void siftDown(int i) {
-        while (2 * i + 1 < heap.size()) {
-            int izq = 2 * i + 1;
-            int der = 2 * i + 2;
-            int mayor = izq;
-            if (der < heap.size() && comparador.compare(heap.get(der).valor, heap.get(izq).valor) > 0) {
-                mayor = der;
+        while(i*2 +1 < cardinal()){
+            int hijoIzq= i*2+1;
+            int hijoDer= i*2+2;
+            int hijoMayor= hijoIzq; // provisional
+            if(hijoDer<cardinal() && comparador.compare(heap.get(hijoDer).valor(), heap.get(hijoIzq).valor())>0){
+                hijoMayor = hijoDer;
             }
-            if (comparador.compare(heap.get(mayor).valor, heap.get(i).valor) > 0){
-                swap(i, mayor);
-                i = mayor;
-            } else{
+            if(comparador.compare(heap.get(hijoMayor).valor(),heap.get(i).valor()) <= 0){ // padre ya mayor
                 break;
             }
+            swap(hijoMayor,i);
+            i=hijoMayor;
         }
+       
     }
 
     public int cardinal(){
     return heap.size();
     }
 
-    public Handle<T> crearHandleBusqueda(T elem){
-        return new HandleHeap(elem, -1);
-    }
-
     public Handle<T> encolar(T elem){
-        HandleHeap nuevo = new HandleHeap(elem, heap.size());
-        heap.add(nuevo);
-        siftUp(nuevo.posicion);
-        return nuevo;
+       HandleHeap nuevo=new HandleHeap(elem, cardinal());
+       heap.add(nuevo);
+       siftUp(cardinal()-1); //agrego al final y luego ordenar con siftUp
+       return nuevo;
     }
 
     public Handle<T> desencolar(){
-        HandleHeap max = heap.get(0);
-        HandleHeap ultimo = heap.remove(heap.size() - 1);
-        if (!heap.isEmpty()){
-            heap.set(0, ultimo);
-            ultimo.posicion = 0;
-            siftDown(0);
+        HandleHeap raiz= heap.get(0);
+        HandleHeap ultimo= heap.remove(cardinal()-1); // remove eliimina y devuelve
+
+        if (cardinal() > 0){
+        heap.set(0, ultimo);
+        ultimo.posicion=0;
+        siftDown(0);
         }
-        return max;
+        raiz.posicion=-1;
+        return raiz;  
     }
 
     public void reEncolar(Handle<T> h){
-        HandleHeap hh = (HandleHeap) h;
-        hh.posicion = heap.size();
-        heap.add(hh);
-        siftUp(hh.posicion);
+        HandleHeap aReEncolar= (HandleHeap)h; // no puedo usar el tipo Handle<T> directamente por lo que uso un cast
+        aReEncolar.posicion=cardinal();
+        heap.add(aReEncolar);
+        siftUp(cardinal()-1);
+
+
+        
     }
 }
