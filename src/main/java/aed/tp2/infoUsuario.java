@@ -16,15 +16,6 @@ public class infoUsuario implements Comparable<infoUsuario>{
         this.esExclusivo = true;
     }
 
-    public int masDisponibles(infoUsuario otro){ //Devuelve positivo si this tiene más millas disponibles, negativo si no y 0 si tienen las mismas
-        int res = 0;
-        if (this.disponibles > otro.disponibles){
-            res = 1;
-        } else if(otro.disponibles > this.disponibles){
-            res = -1;
-        }
-        return res;
-    }
    public String categoria(){ //Devuelve la categoria de un usuairo en base a totales
     String res = "Bronce"; 
     if (10000 <= this.totales && this.totales < 50000){
@@ -50,13 +41,12 @@ public class infoUsuario implements Comparable<infoUsuario>{
    }
 
    @Override 
-   public int compareTo(infoUsuario otro){ //Compara a los usuarios por id
-    int res = 0;
-    if (this.id > otro.id){
-        res = 1;
-    } else if (otro.id > this.id){
-        res = -1;
-    }
+   public int compareTo(infoUsuario otro){ //Compara a los usuarios por disponibles y desempata por id
+    int res=0;
+    if (this.disponibles > otro.disponibles) res = 1;
+    else if (otro.disponibles > this.disponibles)res = -1;
+    else if (otro.id>this.id) res=1;
+    else if (otro.id<this.id) res=-1;
     return res;
    }
 }
