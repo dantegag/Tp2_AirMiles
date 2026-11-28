@@ -14,7 +14,7 @@ public class AirMiles implements SistemaAirMiles {
             heapDisponibles = new MaxHeap<infoUsuario>((u1, u2) -> u1.compareTo(u2)); //El heap se ordena con el compareTo de infoUsuario (millas disponibles, desempata por id)
             masCanjeador = null; //Sin usuarios
             masAcumulador = null;
-            promos.definir("NoPromo", new promo("noPromo", 1.0, 0)); //Creo la noPromo
+            promos.nuevaClave("NoPromo", new promo("noPromo", 1.0, 0)); //Creo la noPromo
         }
 
     private Handle<infoUsuario> buscarHandle(int id){ //Recupero el handle del usuario buscándolo en el ABB por su id (la clave)
@@ -132,11 +132,11 @@ public class AirMiles implements SistemaAirMiles {
     }
 
     public void iniciarPromocion(String nombre, double factor) {
-        promos.definir(nombre, new promo(nombre, factor, 0)); //Defino la nueva promo, como el tope es 0 automáticamente se asigna tieneTope como false
+        promos.nuevaClave(nombre, new promo(nombre, factor, 0)); //Defino la nueva promo, como el tope es 0 automáticamente se asigna tieneTope como false
     }
 
     public void iniciarPromocionConTope(String nombre, double factor, double tope) {
-        promos.definir(nombre, new promo(nombre, factor, tope)); //Defino la nueva promo, al tener tope automáticamente se asigna True a tieneTope
+        promos.nuevaClave(nombre, new promo(nombre, factor, tope)); //Defino la nueva promo, al tener tope automáticamente se asigna True a tieneTope
     }
 
     public void finalizarPromocion(String nombre) {
